@@ -1,3 +1,4 @@
+import openai
 from dotenv import load_dotenv
 import os
 
@@ -17,9 +18,9 @@ def index():
         prompt = request.form["prompt"]
         url = "https://api.openai.com/v1/chat/completions"
         headers = {
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        }
+    "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}",
+    "Content-Type": "application/json"
+}
         data = {
             "model": "gpt-3.5-turbo",
             "messages": [{"role": "user", "content": prompt}],
